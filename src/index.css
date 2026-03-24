@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --color-stellar: #7B2CBF;
+  --color-stellar-dark: #4A0E78;
+  --color-stellar-light: #c084fc;
+  --color-midnight: #0a0a1a;
+  --color-deep-space: #111127;
+  --color-nebula: #1a1a3e;
+  --color-surface: #16162e;
+  --color-accent-green: #22c55e;
+  --color-accent-red: #ef4444;
+  --color-accent-yellow: #f59e0b;
+  --color-accent-cyan: #06d6a0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: #0a0a1a;
+  color: #e2e8f0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(123, 44, 191, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(123, 44, 191, 0.6), 0 0 80px rgba(123, 44, 191, 0.2); }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+@keyframes scan-line {
+  0% { top: -2px; }
+  100% { top: 100%; }
+}
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-slide-up { animation: slide-up 0.8s ease-out forwards; }
+
+.glass {
+  background: rgba(26, 26, 62, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(123, 44, 191, 0.2);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #c084fc, #7B2CBF, #06d6a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #7B2CBF, #c084fc, #06d6a0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.score-ring {
+  transition: stroke-dashoffset 1.5s ease-in-out;
+}
